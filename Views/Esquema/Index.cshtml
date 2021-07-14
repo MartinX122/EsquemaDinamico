@@ -1,0 +1,59 @@
+﻿@using EsquemaDinamico.Data
+@using EsquemaDinamico.Models
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @foreach (Campos campo in (List<Campos>)ViewData["ALLColums"])
+            {
+                <th>
+                    @campo.Nombre
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var row in (SqlRows)ViewData["Rows"])
+{
+        <tr>
+            @foreach (var cel in row)
+            {
+
+                <td>
+                    @cel.Value
+                </td>
+            }
+        </tr>
+}
+
+
+        @*
+            @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tabla.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Desc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoID)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                        </td>
+                    </tr>
+            }*@
+    </tbody>
+</table>
